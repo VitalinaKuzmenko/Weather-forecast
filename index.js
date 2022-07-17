@@ -1,40 +1,83 @@
-let weather = {
-  paris: {
-    temp: 19.7,
-    humidity: 80,
-  },
-  tokyo: {
-    temp: 17.3,
-    humidity: 50,
-  },
-  lisbon: {
-    temp: 30.2,
-    humidity: 20,
-  },
-  "san francisco": {
-    temp: 20.9,
-    humidity: 100,
-  },
-  oslo: {
-    temp: -5,
-    humidity: 20,
-  },
-};
+//function for showing time => 15:29
+function showCurrentTime() {
+  let currentTime = new Date();
+  let hours = currentTime.getHours();
+  let minutes = currentTime.getMinutes();
+  let time = `${hours}:${minutes}`;
 
-let city = prompt("Enter a city").toLowerCase();
-let exists3 = weather.hasOwnProperty(city);
-
-let cityName = city[0].toUpperCase() + city.substring(1);
-
-if (exists3) {
-  let tempInC = Math.round(weather[city].temp);
-  let tempInF = Math.round((weather[city].temp * 9) / 5 + 32);
-
-  alert(
-    `It is currently ${tempInC} °C (${tempInF}°F) in ${cityName} with a humidity of ${weather[city].humidity}%`
-  );
-} else {
-  alert(
-    `Sorry, we don't know the weather for this city, try going to https://www.google.com/search?q=weather+${city}`
-  );
+  let timeInSite = document.querySelector("#time");
+  timeInSite.innerHTML = time;
 }
+
+let days = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
+
+//function for adding zero to month  1 => 01
+function checkZero(number) {
+  number = number.toString();
+  while (number.length < 2) number = "0" + number;
+  return number;
+}
+
+//function for showing date => Sunday, 17.07.2022
+function showCurrentDate() {
+  let currentTime = new Date();
+  let day = days[currentTime.getDay()];
+  let number = currentTime.getDate();
+  let month = currentTime.getMonth() + 1;
+  let year = currentTime.getFullYear();
+  let numberOfMonth;
+
+  month = checkZero(month);
+
+  let fullDate = document.querySelector("#date");
+  fullDate.innerHTML = `${day}, ${number}.${month}.${year}`;
+}
+
+showCurrentTime();
+showCurrentDate();
+
+//changing city
+function changeCity(event) {
+  event.preventDefault();
+  let cityForChange = document.querySelector("#city");
+  let city = document.querySelector("#input").value;
+  cityForChange.innerHTML = city;
+}
+
+let searchButton = document.querySelector("#submit-button");
+searchButton.addEventListener("click", changeCity);
+
+//changing temperature
+function showFahrenheit(event) {
+  event.preventDefault();
+  let temperature = document.querySelector("#temperature");
+  let temperature1 = parseFloat(temperature.textContent);
+  if (temperature1 === 15) {
+    let changedTemperature = temperature1 * 1.8 + 32;
+    temperature.innerHTML = changedTemperature;
+  }
+}
+
+function showCelsius(event) {
+  event.preventDefault();
+  let temperature = document.querySelector("#temperature");
+  let temperature1 = parseFloat(temperature.textContent);
+  if (temperature1 !== 15) {
+    let changedTemperature = (temperature1 - 32) / 1.8;
+    temperature.innerHTML = changedTemperature;
+  }
+}
+
+let unit1 = document.querySelector("#celsius");
+unit1.addEventListener("click", showCelsius);
+
+let unit2 = document.querySelector("#fahrenheit");
+unit2.addEventListener("click", showFahrenheit);
