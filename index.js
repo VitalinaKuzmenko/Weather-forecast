@@ -1,8 +1,17 @@
+//function for adding zero to month, hour, minute  1 => 01
+function checkZero(number) {
+  number = number.toString();
+  while (number.length < 2) number = "0" + number;
+  return number;
+}
+
 //function for showing time => 15:29
 function showCurrentTime() {
   let currentTime = new Date();
   let hours = currentTime.getHours();
   let minutes = currentTime.getMinutes();
+  hours = checkZero(hours);
+  minutes = checkZero(minutes);
   let time = `${hours}:${minutes}`;
 
   let timeInSite = document.querySelector("#time");
@@ -19,13 +28,6 @@ let days = [
   "Saturday",
 ];
 
-//function for adding zero to month  1 => 01
-function checkZero(number) {
-  number = number.toString();
-  while (number.length < 2) number = "0" + number;
-  return number;
-}
-
 //function for showing date => Sunday, 17.07.2022
 function showCurrentDate() {
   let currentTime = new Date();
@@ -33,7 +35,6 @@ function showCurrentDate() {
   let number = currentTime.getDate();
   let month = currentTime.getMonth() + 1;
   let year = currentTime.getFullYear();
-  let numberOfMonth;
 
   month = checkZero(month);
 
@@ -44,40 +45,65 @@ function showCurrentDate() {
 showCurrentTime();
 showCurrentDate();
 
-//changing city
-function changeCity(event) {
+//showing temperature, city, humidity, wind
+function showTemperature(response) {
+  console.log(response.data);
+  let temperature = Math.round(response.data.main.temp);
+  let tempy = document.querySelector("#temperature");
+  tempy.innerHTML = temperature;
+
+  let wind = Math.round(response.data.wind.speed);
+  let windy = document.querySelector("#wind");
+  windy.innerHTML = wind;
+
+  let humidity = response.data.main.humidity;
+  let humy = document.querySelector("#humidity");
+  humy.innerHTML = humidity;
+
+  let description = response.data.weather[0].description;
+  let weatherText = document.querySelector(".weather_text");
+  weatherText.innerHTML = description;
+
+  //checking if we have to change city for current place
+  let city = document.querySelector("#input").value;
+  city = "";
+  if (city === "" && city.length === 0) {
+    let cityForChange = document.querySelector("#city");
+    cityForChange.innerHTML = response.data.name;
+  }
+}
+
+//changing all data
+function changeData(event) {
+  //changing city
   event.preventDefault();
   let cityForChange = document.querySelector("#city");
   let city = document.querySelector("#input").value;
   cityForChange.innerHTML = city;
+
+  //changing temperature, city, humidity, wind
+  let apiKey = "ce8a5720a4218dbb8ae301a6c1f4ec3e";
+  let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
+
+  axios.get(apiURL).then(showTemperature);
+}
+
+//showing data of current place
+function showDataOfCurrentPlace() {
+  function showPosition(position) {
+    let latitude = position.coords.latitude;
+    let longitude = position.coords.longitude;
+
+    let apiKey = "ce8a5720a4218dbb8ae301a6c1f4ec3e";
+    let apiURL = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`;
+
+    axios.get(apiURL).then(showTemperature);
+  }
+  navigator.geolocation.getCurrentPosition(showPosition);
 }
 
 let searchButton = document.querySelector("#submit-button");
-searchButton.addEventListener("click", changeCity);
+searchButton.addEventListener("click", changeData);
 
-//changing temperature
-function showFahrenheit(event) {
-  event.preventDefault();
-  let temperature = document.querySelector("#temperature");
-  let temperature1 = parseFloat(temperature.textContent);
-  if (temperature1 === 15) {
-    let changedTemperature = temperature1 * 1.8 + 32;
-    temperature.innerHTML = changedTemperature;
-  }
-}
-
-function showCelsius(event) {
-  event.preventDefault();
-  let temperature = document.querySelector("#temperature");
-  let temperature1 = parseFloat(temperature.textContent);
-  if (temperature1 !== 15) {
-    let changedTemperature = (temperature1 - 32) / 1.8;
-    temperature.innerHTML = changedTemperature;
-  }
-}
-
-let unit1 = document.querySelector("#celsius");
-unit1.addEventListener("click", showCelsius);
-
-let unit2 = document.querySelector("#fahrenheit");
-unit2.addEventListener("click", showFahrenheit);
+let searchCurrentPlaceButton = document.querySelector("#current-place-button");
+searchCurrentPlaceButton.addEventListener("click", showDataOfCurrentPlace);

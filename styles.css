@@ -28,7 +28,7 @@ body {
 }
 
 .section_1 .search_panel .textarea {
-  width: 80%;
+  width: 68%;
   height: 40px;
   position: relative;
   border: 0;
@@ -38,7 +38,7 @@ body {
 
 .section_1 .search_panel button {
   height: 40px;
-  width: 90px;
+  width: 100px;
   position: relative;
   margin: 0;
   padding: 0;
@@ -127,9 +127,10 @@ body {
   align-self: center;
 }
 
-.section_2 .clouds_text {
+.section_2 .weather_text {
   font-size: 30px;
   font-weight: 300;
+  text-transform: capitalize;
   margin-bottom: 5px;
 }
 
