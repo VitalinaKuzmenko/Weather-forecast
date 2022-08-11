@@ -28,6 +28,23 @@ let days = [
   "Saturday",
 ];
 
+//function for formation day of Day for Section4. It is forecast for 5 days.
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+
+  return days[day];
+}
+
 //function for showing date => Sunday, 17.07.2022
 function showCurrentDate() {
   let currentTime = new Date();
@@ -60,7 +77,7 @@ function showFahrenheit(event) {
   }
 }
 
-//showing tempreture in Celsius
+//showing temperature in Celsius
 function showCelsius(event) {
   event.preventDefault();
   let temperature = document.querySelector("#temperature");
@@ -75,6 +92,32 @@ function showCelsius(event) {
   for (var i = 0; i < allUnits.length; i++) {
     allUnits[i].innerHTML = "°C";
   }
+}
+
+//changing all data
+function changeData(event) {
+  event.preventDefault();
+  let city = document.querySelector("#input").value;
+
+  //changing temperature, city, humidity, wind
+  let apiKey = "ce8a5720a4218dbb8ae301a6c1f4ec3e";
+  let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
+
+  axios.get(apiURL).then(showTemperature);
+}
+
+//showing data of current place
+function showDataOfCurrentPlace() {
+  function showPosition(position) {
+    let latitude = position.coords.latitude;
+    let longitude = position.coords.longitude;
+
+    let apiKey = "ce8a5720a4218dbb8ae301a6c1f4ec3e";
+    let apiURL = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`;
+
+    axios.get(apiURL).then(showTemperature);
+  }
+  navigator.geolocation.getCurrentPosition(showPosition);
 }
 
 //showing temperature, city, humidity, wind
@@ -113,51 +156,46 @@ function showTemperature(response) {
     let cityForChange = document.querySelector("#city");
     cityForChange.innerHTML = response.data.name;
   }
+
+  //checking coordianates for section4. It is 5 days forecast.
+  let coordinates = response.data.coord;
+  changeSection4(coordinates);
+  console.log(coordinates);
 }
 
-//changing all data
-function changeData(event) {
-  event.preventDefault();
-  let city = document.querySelector("#input").value;
-
-  //changing temperature, city, humidity, wind
+//changing data in section 4
+function changeSection4(coordinates) {
   let apiKey = "ce8a5720a4218dbb8ae301a6c1f4ec3e";
-  let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
-
-  axios.get(apiURL).then(showTemperature);
+  // let apiURL = `https://api.openweathermap.org/data/2.5/forecast/daily?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  //api.openweathermap.org/data/2.5/forecast/daily?lat={lat}&lon={lon}&cnt={cnt}&appid={API key}
+  let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiURL).then(displaySection4);
 }
 
-//showing data of current place
-function showDataOfCurrentPlace() {
-  function showPosition(position) {
-    let latitude = position.coords.latitude;
-    let longitude = position.coords.longitude;
-
-    let apiKey = "ce8a5720a4218dbb8ae301a6c1f4ec3e";
-    let apiURL = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`;
-
-    axios.get(apiURL).then(showTemperature);
-  }
-  navigator.geolocation.getCurrentPosition(showPosition);
-}
-
-function displayForecast() {
+//displaying section 4. It is 5 days forecast.
+function displaySection4(response) {
+  console.log(response.data);
+  let forecastDaily = response.data.daily;
+  console.log(forecastDaily);
   let forecastElement = document.querySelector(".section_4");
-
   let forecastHTML = "";
-  let days = ["Thursday", "Friday", "Saturday", "Sunday", "Monday"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `<div class="day">
-          <p>${day}</p>
-          <img class="small_icon" src="media/color/01d.png" alt="Sunny" />
-          <p>+27°C +13°C</p>
+
+  forecastDaily.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `<div class="day">
+          <p>${formatDay(forecastDay.dt)}</p>
+          <img class="small_icon" src="media/color/${
+            forecastDay.weather[0].icon
+          }.png" alt="Sunny" />
+          <p>+${Math.round(forecastDay.temp.max)}°C +${Math.round(
+          forecastDay.temp.min
+        )}°C</p>
         </div>`;
+    }
   });
   forecastElement.innerHTML = forecastHTML;
-
-  console.log(forecastHTML);
 }
 
 let celsiusTemperature = null;
@@ -177,4 +215,3 @@ searchCurrentPlaceButton.addEventListener("click", showDataOfCurrentPlace);
 showCurrentTime();
 showCurrentDate();
 showDataOfCurrentPlace();
-displayForecast();
