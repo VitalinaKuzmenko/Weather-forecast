@@ -121,10 +121,37 @@ body {
 }
 
 .section_2 .part_1 .temperature_text {
-  font-size: 60px;
+  font-size: 70px;
   font-weight: 500;
   display: flex;
   align-self: center;
+}
+
+.temp-unit {
+  font-size: 30px;
+  margin-top: 18px;
+  padding-left: 2px;
+  padding-right: 2px;
+}
+
+.active {
+  color: white;
+  text-decoration: none;
+  cursor: default;
+}
+
+.active:hover {
+  color: white;
+  text-decoration: none;
+}
+
+.non-active {
+  color: grey;
+  text-decoration: none;
+}
+.non-active:hover {
+  color: #302785;
+  text-decoration: underline;
 }
 
 .section_2 .weather_text {
@@ -188,4 +215,5 @@ body {
   text-align: center;
   margin-bottom: 30px;
   font-family: "Barlow Condensed", sans-serif;
+  margin-top: -20px;
 }

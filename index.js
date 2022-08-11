@@ -42,14 +42,46 @@ function showCurrentDate() {
   fullDate.innerHTML = `${day}, ${number}.${month}.${year}`;
 }
 
-showCurrentTime();
-showCurrentDate();
+//showing tempreture in Fahrenheit
+function showFahrenheit(event) {
+  event.preventDefault();
+  let temperature = document.querySelector("#temperature");
+  let fahrenheitTemperature = Math.round(celsiusTemperature * 1.8 + 32);
+  temperature.innerHTML = fahrenheitTemperature;
+  //changing classes
+  unitCelsius.classList.remove("active");
+  unitCelsius.classList.add("non-active");
+  unitFahrenheit.classList.remove("non-active");
+  unitFahrenheit.classList.add("active");
+  //changing units everywhere
+  let allUnits = document.querySelectorAll("#unit");
+  for (var i = 0; i < allUnits.length; i++) {
+    allUnits[i].innerHTML = "°F";
+  }
+}
+
+//showing tempreture in Celsius
+function showCelsius(event) {
+  event.preventDefault();
+  let temperature = document.querySelector("#temperature");
+  temperature.innerHTML = Math.round(celsiusTemperature);
+  //changing classes
+  unitCelsius.classList.remove("non-active");
+  unitCelsius.classList.add("active");
+  unitFahrenheit.classList.remove("active");
+  unitFahrenheit.classList.add("non-active");
+  //changing units everywhere
+  let allUnits = document.querySelectorAll("#unit");
+  for (var i = 0; i < allUnits.length; i++) {
+    allUnits[i].innerHTML = "°C";
+  }
+}
 
 //showing temperature, city, humidity, wind
 function showTemperature(response) {
-  let temperature = Math.round(response.data.main.temp);
+  celsiusTemperature = Math.round(response.data.main.temp);
   let tempy = document.querySelector("#temperature");
-  tempy.innerHTML = temperature;
+  tempy.innerHTML = celsiusTemperature;
 
   let wind = Math.round(response.data.wind.speed);
   let windy = document.querySelector("#wind");
@@ -102,8 +134,20 @@ function showDataOfCurrentPlace() {
   navigator.geolocation.getCurrentPosition(showPosition);
 }
 
+let celsiusTemperature = null;
+
+let unitCelsius = document.querySelector("#celsius-link");
+unitCelsius.addEventListener("click", showCelsius);
+
+let unitFahrenheit = document.querySelector("#fahrenheit-link");
+unitFahrenheit.addEventListener("click", showFahrenheit);
+
 let searchButton = document.querySelector("#submit-button");
 searchButton.addEventListener("click", changeData);
 
 let searchCurrentPlaceButton = document.querySelector("#current-place-button");
 searchCurrentPlaceButton.addEventListener("click", showDataOfCurrentPlace);
+
+showCurrentTime();
+showCurrentDate();
+showDataOfCurrentPlace();
