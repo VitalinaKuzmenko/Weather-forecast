@@ -141,6 +141,25 @@ function showDataOfCurrentPlace() {
   navigator.geolocation.getCurrentPosition(showPosition);
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector(".section_4");
+
+  let forecastHTML = "";
+  let days = ["Thursday", "Friday", "Saturday", "Sunday", "Monday"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="day">
+          <p>${day}</p>
+          <img class="small_icon" src="media/color/01d.png" alt="Sunny" />
+          <p>+27°C +13°C</p>
+        </div>`;
+  });
+  forecastElement.innerHTML = forecastHTML;
+
+  console.log(forecastHTML);
+}
+
 let celsiusTemperature = null;
 
 let unitCelsius = document.querySelector("#celsius-link");
@@ -158,3 +177,4 @@ searchCurrentPlaceButton.addEventListener("click", showDataOfCurrentPlace);
 showCurrentTime();
 showCurrentDate();
 showDataOfCurrentPlace();
+displayForecast();
