@@ -79,6 +79,7 @@ function showCelsius(event) {
 
 //showing temperature, city, humidity, wind
 function showTemperature(response) {
+  console.log(response.data);
   celsiusTemperature = Math.round(response.data.main.temp);
   let tempy = document.querySelector("#temperature");
   tempy.innerHTML = celsiusTemperature;
@@ -97,12 +98,8 @@ function showTemperature(response) {
 
   //checking if we have to change city for current place
   let city = document.querySelector("#input").value;
-  console.log("the city before: " + city);
   city = "";
-  console.log("the city after: " + city);
   if (city === "" && city.length === 0) {
-    console.log("the city inside " + city);
-    console.log("hm" + response.data.name);
     let cityForChange = document.querySelector("#city");
     cityForChange.innerHTML = response.data.name;
   }
