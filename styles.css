@@ -9,8 +9,8 @@ body {
 .main_window {
   background-color: rgba(108, 103, 129, 0.5);
   margin: auto;
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin-top: 25px;
+  margin-bottom: 25px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -56,14 +56,23 @@ body {
   color: white;
 }
 
+.section_1 .title_0 {
+  font-size: 36px;
+  font-weight: 400;
+  margin-top: -5px;
+  margin-bottom: -3px;
+}
+
 .section_1 .title_1 {
-  font-size: 30px;
+  font-size: 26px;
   font-weight: 300;
 }
 
 .section_1 .title_2 {
   font-size: 20px;
   font-weight: 300;
+  margin-top: -3px;
+  margin-bottom: -5px;
 }
 
 .big_icon {

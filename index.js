@@ -41,7 +41,6 @@ function formatDay(timestamp) {
     "Friday",
     "Saturday",
   ];
-
   return days[day];
 }
 
@@ -131,6 +130,8 @@ function showCelsius(event) {
 //changing all data
 function changeData(event) {
   event.preventDefault();
+  maxTemperatureArray = [];
+  minTemperatureArray = [];
   let city = document.querySelector("#input").value;
 
   //changing temperature, city, humidity, wind
@@ -142,6 +143,8 @@ function changeData(event) {
 
 //showing data of current place
 function showDataOfCurrentPlace() {
+  maxTemperatureArray = [];
+  minTemperatureArray = [];
   function showPosition(position) {
     let latitude = position.coords.latitude;
     let longitude = position.coords.longitude;
