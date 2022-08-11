@@ -157,26 +157,65 @@ function showTemperature(response) {
     cityForChange.innerHTML = response.data.name;
   }
 
-  //checking coordianates for section4. It is 5 days forecast.
+  //checking coordianates for section 3 & 4.
   let coordinates = response.data.coord;
   changeSection4(coordinates);
-  console.log(coordinates);
+  changeSection3(coordinates);
 }
 
 //changing data in section 4
 function changeSection4(coordinates) {
   let apiKey = "ce8a5720a4218dbb8ae301a6c1f4ec3e";
-  // let apiURL = `https://api.openweathermap.org/data/2.5/forecast/daily?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
-  //api.openweathermap.org/data/2.5/forecast/daily?lat={lat}&lon={lon}&cnt={cnt}&appid={API key}
   let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
   axios.get(apiURL).then(displaySection4);
 }
 
+//changing data in section 3. Daytime and Nightime forecast
+function changeSection3(coordinates) {
+  let apiKey = "ce8a5720a4218dbb8ae301a6c1f4ec3e";
+  let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiURL).then(displaySection3);
+}
+
+function displaySection3(response) {
+  let dayTime = document.querySelector("#day_temperature");
+  let nightTime = document.querySelector("#night_temperature");
+  dayTimeTemperature = Math.round(response.data.daily[0].temp.day);
+  nightTimeTemperature = Math.round(response.data.daily[0].temp.night);
+  dayTime.innerHTML = dayTimeTemperature;
+  nightTime.innerHTML = nightTimeTemperature;
+
+  //changing description in section 3
+  let day24 = response.data.hourly;
+  let dayDescription = document.querySelector("#day-description");
+  let nightDescription = document.querySelector("#night-description");
+  let dayPicture = document.querySelector("#day_icon");
+  let nightPicture = document.querySelector("#night_icon");
+
+  //changing picture and description of section 3
+  for (var i = 0; i < 24; i++) {
+    let date = new Date(day24[i].dt * 1000);
+    let hour = date.getHours();
+    if (hour === 12) {
+      dayDescription.innerHTML = day24[i].weather[0].description;
+      dayPicture.setAttribute(
+        "src",
+        `media/color/${day24[i].weather[0].icon}.png`
+      );
+    }
+    if (hour === 22) {
+      nightDescription.innerHTML = day24[i].weather[0].description;
+      nightPicture.setAttribute(
+        "src",
+        `media/color/${day24[i].weather[0].icon}.png`
+      );
+    }
+  }
+}
+
 //displaying section 4. It is 5 days forecast.
 function displaySection4(response) {
-  console.log(response.data);
   let forecastDaily = response.data.daily;
-  console.log(forecastDaily);
   let forecastElement = document.querySelector(".section_4");
   let forecastHTML = "";
 
