@@ -79,7 +79,12 @@ function showCelsius(event) {
 
 //showing temperature, city, humidity, wind
 function showTemperature(response) {
-  console.log(response.data);
+  //changing classes to celsius
+  unitCelsius.classList.remove("non-active");
+  unitCelsius.classList.add("active");
+  unitFahrenheit.classList.remove("active");
+  unitFahrenheit.classList.add("non-active");
+
   celsiusTemperature = Math.round(response.data.main.temp);
   let tempy = document.querySelector("#temperature");
   tempy.innerHTML = celsiusTemperature;
@@ -95,6 +100,11 @@ function showTemperature(response) {
   let description = response.data.weather[0].description;
   let weatherText = document.querySelector(".weather_text");
   weatherText.innerHTML = description;
+
+  let pictureName = response.data.weather[0].icon;
+  let bigIcon = document.querySelector(".big_icon");
+  bigIcon.setAttribute("src", `media/color/${pictureName}.png`);
+  bigIcon.setAttribute("alt", description);
 
   //checking if we have to change city for current place
   let city = document.querySelector("#input").value;
