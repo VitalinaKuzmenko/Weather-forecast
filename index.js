@@ -65,6 +65,23 @@ function showFahrenheit(event) {
   let temperature = document.querySelector("#temperature");
   let fahrenheitTemperature = Math.round(celsiusTemperature * 1.8 + 32);
   temperature.innerHTML = fahrenheitTemperature;
+
+  let dayTemperaute = document.querySelector("#day_temperature");
+  dayTemperaute.innerHTML = Math.round(dayTimeTemperature * 1.8 + 32);
+
+  let nightTemperature = document.querySelector("#night_temperature");
+  nightTemperature.innerHTML = Math.round(nightTimeTemperature * 1.8 + 32);
+
+  let allMaxTemp = document.querySelectorAll("#max-temperature");
+  for (var i = 0; i < allMaxTemp.length; i++) {
+    allMaxTemp[i].innerHTML = Math.round(maxTemperatureArray[i] * 1.8 + 32);
+  }
+
+  let allMinTemp = document.querySelectorAll("#min-temperature");
+  for (var i = 0; i < allMinTemp.length; i++) {
+    allMinTemp[i].innerHTML = Math.round(minTemperatureArray[i] * 1.8 + 32);
+  }
+
   //changing classes
   unitCelsius.classList.remove("active");
   unitCelsius.classList.add("non-active");
@@ -82,6 +99,23 @@ function showCelsius(event) {
   event.preventDefault();
   let temperature = document.querySelector("#temperature");
   temperature.innerHTML = Math.round(celsiusTemperature);
+
+  let dayTemperaute = document.querySelector("#day_temperature");
+  dayTemperaute.innerHTML = Math.round(dayTimeTemperature);
+
+  let nightTemperature = document.querySelector("#night_temperature");
+  nightTemperature.innerHTML = Math.round(nightTimeTemperature);
+
+  let allMaxTemp = document.querySelectorAll("#max-temperature");
+  for (var i = 0; i < allMaxTemp.length; i++) {
+    allMaxTemp[i].innerHTML = Math.round(maxTemperatureArray[i]);
+  }
+
+  let allMinTemp = document.querySelectorAll("#min-temperature");
+  for (var i = 0; i < allMinTemp.length; i++) {
+    allMinTemp[i].innerHTML = Math.round(minTemperatureArray[i]);
+  }
+
   //changing classes
   unitCelsius.classList.remove("non-active");
   unitCelsius.classList.add("active");
@@ -202,6 +236,7 @@ function displaySection3(response) {
         "src",
         `media/color/${day24[i].weather[0].icon}.png`
       );
+      dayPicture.setAttribute("alt", day24[i].weather[0].description);
     }
     if (hour === 22) {
       nightDescription.innerHTML = day24[i].weather[0].description;
@@ -209,6 +244,7 @@ function displaySection3(response) {
         "src",
         `media/color/${day24[i].weather[0].icon}.png`
       );
+      nightPicture.setAttribute("alt", day24[i].weather[0].description);
     }
   }
 }
@@ -220,7 +256,11 @@ function displaySection4(response) {
   let forecastHTML = "";
 
   forecastDaily.forEach(function (forecastDay, index) {
-    if (index < 6) {
+    maxTemperature = Math.round(forecastDay.temp.max);
+    minTemperature = Math.round(forecastDay.temp.min);
+    maxTemperatureArray.push(maxTemperature);
+    minTemperatureArray.push(minTemperature);
+    if (index < 5) {
       forecastHTML =
         forecastHTML +
         `<div class="day">
@@ -228,9 +268,12 @@ function displaySection4(response) {
           <img class="small_icon" src="media/color/${
             forecastDay.weather[0].icon
           }.png" alt="Sunny" />
-          <p>+${Math.round(forecastDay.temp.max)}°C +${Math.round(
-          forecastDay.temp.min
-        )}°C</p>
+          <p>
+          <span id="max-temperature">${maxTemperature} </span>
+          <span id="unit">°C</span>
+          <span id="min-temperature">${minTemperature} </span>
+        <span id="unit">°C</span>
+        </p>
         </div>`;
     }
   });
@@ -238,6 +281,12 @@ function displaySection4(response) {
 }
 
 let celsiusTemperature = null;
+let dayTimeTemperature = null;
+let nightTimeTemperature = null;
+let maxTemperature = null;
+let minTemperature = null;
+let maxTemperatureArray = [];
+let minTemperatureArray = [];
 
 let unitCelsius = document.querySelector("#celsius-link");
 unitCelsius.addEventListener("click", showCelsius);
