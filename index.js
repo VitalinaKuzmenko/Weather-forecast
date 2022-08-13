@@ -77,8 +77,8 @@ function showFahrenheit(event) {
   }
 
   let allMinTemp = document.querySelectorAll("#min-temperature");
-  for (var i = 0; i < allMinTemp.length; i++) {
-    allMinTemp[i].innerHTML = Math.round(minTemperatureArray[i] * 1.8 + 32);
+  for (var j = 0; j < allMinTemp.length; j++) {
+    allMinTemp[j].innerHTML = Math.round(minTemperatureArray[j] * 1.8 + 32);
   }
 
   //changing classes
@@ -87,9 +87,9 @@ function showFahrenheit(event) {
   unitFahrenheit.classList.remove("non-active");
   unitFahrenheit.classList.add("active");
   //changing units everywhere
-  let allUnits = document.querySelectorAll("#unit");
-  for (var i = 0; i < allUnits.length; i++) {
-    allUnits[i].innerHTML = "°F";
+  let allUnits = document.querySelectorAll(".unit");
+  for (var k = 0; k < allUnits.length; k++) {
+    allUnits[k].innerHTML = "°F";
   }
 }
 
@@ -106,13 +106,13 @@ function showCelsius(event) {
   nightTemperature.innerHTML = Math.round(nightTimeTemperature);
 
   let allMaxTemp = document.querySelectorAll("#max-temperature");
-  for (var i = 0; i < allMaxTemp.length; i++) {
-    allMaxTemp[i].innerHTML = Math.round(maxTemperatureArray[i]);
+  for (var n = 0; n < allMaxTemp.length; n++) {
+    allMaxTemp[n].innerHTML = Math.round(maxTemperatureArray[n]);
   }
 
   let allMinTemp = document.querySelectorAll("#min-temperature");
-  for (var i = 0; i < allMinTemp.length; i++) {
-    allMinTemp[i].innerHTML = Math.round(minTemperatureArray[i]);
+  for (var m = 0; m < allMinTemp.length; m++) {
+    allMinTemp[m].innerHTML = Math.round(minTemperatureArray[m]);
   }
 
   //changing classes
@@ -121,7 +121,7 @@ function showCelsius(event) {
   unitFahrenheit.classList.remove("active");
   unitFahrenheit.classList.add("non-active");
   //changing units everywhere
-  let allUnits = document.querySelectorAll("#unit");
+  let allUnits = document.querySelectorAll(".unit");
   for (var i = 0; i < allUnits.length; i++) {
     allUnits[i].innerHTML = "°C";
   }
@@ -241,7 +241,7 @@ function displaySection3(response) {
       );
       dayPicture.setAttribute("alt", day24[i].weather[0].description);
     }
-    if (hour === 22) {
+    if (hour === 3) {
       nightDescription.innerHTML = day24[i].weather[0].description;
       nightPicture.setAttribute(
         "src",
@@ -273,9 +273,9 @@ function displaySection4(response) {
           }.png" alt="Sunny" />
           <p>
           <span id="max-temperature">${maxTemperature} </span>
-          <span id="unit">°C</span>
+          <span class="unit">°C</span>
           <span id="min-temperature">${minTemperature} </span>
-        <span id="unit">°C</span>
+        <span class="unit">°C</span>
         </p>
         </div>`;
     }
