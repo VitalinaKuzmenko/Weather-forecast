@@ -28,7 +28,7 @@ body {
 }
 
 .section_1 .search_panel .textarea {
-  width: 68%;
+  width: 63%;
   height: 40px;
   position: relative;
   border: 0;
@@ -38,14 +38,14 @@ body {
 
 .section_1 .search_panel button {
   height: 40px;
-  width: 100px;
+  width: 120px;
   position: relative;
   margin: 0;
   padding: 0;
   border: 0;
   border-radius: 5px;
   font-size: 20px;
-  font-weight: 400;
+  font-weight: 300;
   background-color: white;
   cursor: pointer;
   transition: all 150ms ease-in-out;
@@ -77,17 +77,17 @@ body {
 
 .big_icon {
   width: 20vh;
-  height: auto;
+  height: 20vh;
 }
 
 .medium_icon {
   width: 15vh;
-  height: auto;
+  height: 15vh;
 }
 
 .small_icon {
   width: 10vh;
-  height: auto;
+  height: 10vh;
 }
 
 .vertical_line {
@@ -182,7 +182,7 @@ body {
 
 .section_2 .the_smallest_icon {
   width: 5vh;
-  height: auto;
+  height: 5vh;
 }
 
 .section_3 {

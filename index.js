@@ -127,18 +127,20 @@ function showCelsius(event) {
   }
 }
 
-//changing all data
-function changeData(event) {
+//changing all data -  temperature, city, humidity, wind
+function search(city) {
+  let apiKey = "ce8a5720a4218dbb8ae301a6c1f4ec3e";
+  let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
+  axios.get(apiURL).then(showTemperature);
+}
+
+//handling submit of a city
+function handleSubmit(event) {
   event.preventDefault();
   maxTemperatureArray = [];
   minTemperatureArray = [];
   let city = document.querySelector("#input").value;
-
-  //changing temperature, city, humidity, wind
-  let apiKey = "ce8a5720a4218dbb8ae301a6c1f4ec3e";
-  let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
-
-  axios.get(apiURL).then(showTemperature);
+  search(city);
 }
 
 //showing data of current place
@@ -298,11 +300,11 @@ let unitFahrenheit = document.querySelector("#fahrenheit-link");
 unitFahrenheit.addEventListener("click", showFahrenheit);
 
 let searchButton = document.querySelector("#submit-button");
-searchButton.addEventListener("click", changeData);
+searchButton.addEventListener("click", handleSubmit);
 
 let searchCurrentPlaceButton = document.querySelector("#current-place-button");
 searchCurrentPlaceButton.addEventListener("click", showDataOfCurrentPlace);
 
 showCurrentTime();
 showCurrentDate();
-showDataOfCurrentPlace();
+search("New York");
