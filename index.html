@@ -31,109 +31,113 @@
     </style>
   </head>
   <body>
-    <div class="main_window">
-      <div class="section_1">
-        <form class="search_panel">
-          <input
-            type="text"
-            class="textarea"
-            placeholder="Enter a city..."
-            id="input"
-          />
-          <button type="submit" id="submit-button">Search</button>
-          <button type="button" id="current-place-button">Current place</button>
-        </form>
+    <div class="container">
+      <div class="main_window">
+        <div class="section_1">
+          <form class="search_panel">
+            <input
+              type="text"
+              class="textarea"
+              placeholder="Enter a city..."
+              id="input"
+            />
+            <button type="submit" id="submit-button">Search</button>
+            <button type="button" id="current-place-button">
+              Current place
+            </button>
+          </form>
 
-        <h2 class="title_0" id="city">London</h2>
-        <h2 class="title_1">Last update: <span id="time">22:26</span></h2>
-        <h3 class="title_2" id="date">Sunday, 22.06.2022</h3>
-      </div>
+          <h2 class="title_0" id="city">London</h2>
+          <h2 class="title_1">Last update: <span id="time">22:26</span></h2>
+          <h3 class="title_2" id="date">Sunday, 22.06.2022</h3>
+        </div>
 
-      <br />
+        <br />
 
-      <div class="main_sections">
-        <div class="section_2">
-          <div class="part_1">
-            <p class="temperature_text">
-              <span class="temperature_text" id="temperature">15</span>
-              <a href="#" class="temp-unit active" id="celsius-link">°C</a>
-              <span class="temp-unit"> | </span>
-              <a href="#" class="temp-unit non-active" id="fahrenheit-link"
-                >°F</a
-              >
-            </p>
-            <img class="big_icon" src="media/color/03d.png" alt="Clouds" />
-          </div>
-          <p class="weather_text">Clouds</p>
-          <div class="part_2">
-            <div>
-              <img
-                class="the_smallest_icon"
-                src="media/color/wind.png"
-                alt="Wind"
-              />
-              <span id="wind">4</span>
-              <span> km/h</span>
+        <div class="main_sections">
+          <div class="section_2">
+            <div class="part_1">
+              <p class="temperature_text">
+                <span class="temperature_text" id="temperature">15</span>
+                <a href="#" class="temp-unit active" id="celsius-link">°C</a>
+                <span class="temp-unit"> | </span>
+                <a href="#" class="temp-unit non-active" id="fahrenheit-link"
+                  >°F</a
+                >
+              </p>
+              <img class="big_icon" src="media/color/03d.png" alt="Clouds" />
             </div>
-            <div class="padding-left">
+            <p class="weather_text">Clouds</p>
+            <div class="part_2">
+              <div>
+                <img
+                  class="the_smallest_icon"
+                  src="media/color/wind.png"
+                  alt="Wind"
+                />
+                <span id="wind">4</span>
+                <span> km/h</span>
+              </div>
+              <div class="padding-left">
+                <img
+                  class="the_smallest_icon"
+                  src="media/color/humidity.png"
+                  alt="Drop"
+                />
+                <span id="humidity">58</span>
+                <span>%</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="vertical_line"></div>
+
+          <div class="section_3">
+            <div class="part">
+              <p>Daytime</p>
+              <p>
+                <span id="day_temperature">20</span>
+                <span class="unit">°C</span>
+              </p>
+
               <img
-                class="the_smallest_icon"
-                src="media/color/humidity.png"
-                alt="Drop"
+                class="medium_icon"
+                id="day_icon"
+                src="media/color/01d.png"
+                alt="Sunny"
               />
-              <span id="humidity">58</span>
-              <span>%</span>
+              <p id="day-description">Warm</p>
+            </div>
+            <div class="part">
+              <p>Nightime</p>
+              <p>
+                <span id="night_temperature">5</span>
+                <span class="unit">°C</span>
+              </p>
+              <img
+                class="medium_icon"
+                id="night_icon"
+                src="media/color/02d.png"
+                alt="moon"
+              />
+              <p id="night-description">Cold</p>
             </div>
           </div>
         </div>
 
-        <div class="vertical_line"></div>
+        <div class="horizontal_line"></div>
 
-        <div class="section_3">
-          <div class="part">
-            <p>Daytime</p>
-            <p>
-              <span id="day_temperature">20</span>
-              <span class="unit">°C</span>
-            </p>
-
-            <img
-              class="medium_icon"
-              id="day_icon"
-              src="media/color/01d.png"
-              alt="Sunny"
-            />
-            <p id="day-description">Warm</p>
-          </div>
-          <div class="part">
-            <p>Nightime</p>
-            <p>
-              <span id="night_temperature">5</span>
-              <span class="unit">°C</span>
-            </p>
-            <img
-              class="medium_icon"
-              id="night_icon"
-              src="media/color/02d.png"
-              alt="moon"
-            />
-            <p id="night-description">Cold</p>
-          </div>
-        </div>
+        <div class="section_4"></div>
       </div>
-
-      <div class="horizontal_line"></div>
-
-      <div class="section_4"></div>
+      <p class="source-code-text">
+        <a
+          target="_blank"
+          href="https://github.com/VitalinaKuzmenko/Weather-forecast.git"
+          >Open-source code</a
+        >
+        , by Vitalina Kuzmenko
+      </p>
     </div>
-    <p class="source-code-text">
-      <a
-        target="_blank"
-        href="https://github.com/VitalinaKuzmenko/Weather-forecast.git"
-        >Open-source code</a
-      >
-      , by Vitalina Kuzmenko
-    </p>
     <script src="index.js"></script>
   </body>
 </html>
