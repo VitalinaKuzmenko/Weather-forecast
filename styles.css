@@ -202,6 +202,11 @@ body {
   padding: 5px 10px;
 }
 
+.section_4 .day-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
 .section_4 .day img {
   display: block;
   margin: 0 auto;

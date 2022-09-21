@@ -268,20 +268,26 @@ function displaySection4(response) {
     if (index < 5) {
       forecastHTML =
         forecastHTML +
-        `<div class="col-2">
-        <div class="day">
-          <p>${formatDay(forecastDay.dt)}</p>
-          <img class="small_icon" src="media/color/${
-            forecastDay.weather[0].icon
-          }.png" alt="Sunny" />
-          <p>
-          <span id="max-temperature">${maxTemperature} </span>
-          <span class="unit">°C</span>
-          <span id="min-temperature">${minTemperature} </span>
-        <span class="unit">°C</span>
-        </p>
+        `    <div class="col-2">
+        <div class="day-wrapper">
+          <div class="day">
+            <p>${formatDay(forecastDay.dt)}</p>
+            <img class="small_icon" src="media/color/${
+              forecastDay.weather[0].icon
+            }.png" alt="Sunny" />
+            <div class="row d-flex flex-column">
+              <div class="col">
+                <span id="max-temperature">${maxTemperature} </span>
+                <span class="unit">°C</span>
+              </div>
+              <div class="col">
+                <span id="min-temperature">${minTemperature} </span>
+                <span class="unit">°C</span>
+              </div>
+            </div>
+          </div>
         </div>
-        </div>`;
+      </div>`;
     }
   });
   forecastHTML = forecastHTML + ' <div class="col-1"></div>';
