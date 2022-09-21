@@ -257,8 +257,8 @@ function displaySection3(response) {
 //displaying section 4. It is 5 days forecast.
 function displaySection4(response) {
   let forecastDaily = response.data.daily;
-  let forecastElement = document.querySelector(".section_4");
-  let forecastHTML = "";
+  let forecastElement = document.querySelector(".day_forecast");
+  let forecastHTML = ' <div class="col-1"></div>';
 
   forecastDaily.forEach(function (forecastDay, index) {
     maxTemperature = Math.round(forecastDay.temp.max);
@@ -268,7 +268,8 @@ function displaySection4(response) {
     if (index < 5) {
       forecastHTML =
         forecastHTML +
-        `<div class="day">
+        `<div class="col-2">
+        <div class="day">
           <p>${formatDay(forecastDay.dt)}</p>
           <img class="small_icon" src="media/color/${
             forecastDay.weather[0].icon
@@ -279,9 +280,11 @@ function displaySection4(response) {
           <span id="min-temperature">${minTemperature} </span>
         <span class="unit">°C</span>
         </p>
+        </div>
         </div>`;
     }
   });
+  forecastHTML = forecastHTML + ' <div class="col-1"></div>';
   forecastElement.innerHTML = forecastHTML;
 }
 
