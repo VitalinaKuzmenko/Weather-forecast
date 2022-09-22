@@ -87,7 +87,7 @@ body {
 }
 
 .small_icon {
-  width: 100%;
+  width: 70px;
   height: auto;
 }
 
@@ -189,22 +189,18 @@ body {
 }
 
 .section_4 {
-  display: flex;
-  justify-content: space-between;
   font-size: 20px;
+  text-align: center;
 }
 
 .section_4 .day {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  text-align: center;
   padding: 5px 10px;
 }
 
 .section_4 .day-wrapper {
   display: flex;
   justify-content: center;
+  align-items: flex-start;
 }
 
 .section_4 .day img {
@@ -219,4 +215,102 @@ body {
   margin-bottom: 30px;
   font-family: "Barlow Condensed", sans-serif;
   margin-top: -20px;
+}
+
+@media (max-width: 992px) {
+  .section_1 .center-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  .section_1 .center-buttons #submit-button {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+  .section_1 .search_panel button:hover {
+    background-color: white;
+    color: black;
+  }
+
+  .section_1 .titles {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .section_2 .temperature_text {
+    display: flex;
+    justify-content: center;
+  }
+
+  .section_2 {
+    text-align: center;
+  }
+
+  .section_2 .row {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .big_icon {
+    width: 180px;
+    height: auto;
+  }
+
+  .medium_icon {
+    width: 130px;
+    height: auto;
+  }
+
+  .small_icon {
+    width: 115px;
+    height: auto;
+  }
+
+  .section_2 .the_smallest_icon {
+    width: 50px;
+    height: auto;
+  }
+
+  .small_horizontal_line {
+    border-bottom: 0.5px solid white;
+    padding-top: 5px;
+    margin-bottom: 5px;
+    width: 50%;
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 540px) {
+  .big_icon {
+    width: 140px;
+    height: auto;
+  }
+
+  .medium_icon {
+    width: 100px;
+    height: auto;
+  }
+
+  .small_icon {
+    width: 75px;
+    height: auto;
+  }
+}
+
+@media (max-width: 380px) {
+  .section_1 .center-buttons {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 10px;
+  }
+
+  .section_1 .center-buttons #submit-button {
+    margin: 0;
+  }
 }

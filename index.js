@@ -258,7 +258,7 @@ function displaySection3(response) {
 function displaySection4(response) {
   let forecastDaily = response.data.daily;
   let forecastElement = document.querySelector(".day_forecast");
-  let forecastHTML = ' <div class="col-1"></div>';
+  let forecastHTML = ' <div class="col-lg-1"></div>';
 
   forecastDaily.forEach(function (forecastDay, index) {
     maxTemperature = Math.round(forecastDay.temp.max);
@@ -268,7 +268,7 @@ function displaySection4(response) {
     if (index < 5) {
       forecastHTML =
         forecastHTML +
-        `    <div class="col-2">
+        `<div class="col-lg-2">
         <div class="day-wrapper">
           <div class="day">
             <p>${formatDay(forecastDay.dt)}</p>
@@ -287,10 +287,11 @@ function displaySection4(response) {
             </div>
           </div>
         </div>
-      </div>`;
+      </div>
+      <div class="col-lg d-lg-none small_horizontal_line"></div>`;
     }
   });
-  forecastHTML = forecastHTML + ' <div class="col-1"></div>';
+  forecastHTML = forecastHTML + ' <div class="col-lg-1"></div>';
   forecastElement.innerHTML = forecastHTML;
 }
 

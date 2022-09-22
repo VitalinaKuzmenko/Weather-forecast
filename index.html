@@ -29,11 +29,11 @@
       <div class="section_1">
         <form class="search_panel">
           <div class="row">
-            <div class="col-9">
+            <div class="col-lg-9">
               <input type="text" class="textarea" placeholder="Enter a city..." id="input" />
             </div>
-            <div class="col-3">
-              <button class="mb-1" type="submit" id="submit-button">Search</button>
+            <div class="col-lg-3 center-buttons">
+              <button class="mb-1" type="button" id="submit-button">Search</button>
               <button type="button" id="current-place-button">
                 Current place
               </button>
@@ -50,10 +50,10 @@
 
       <div class="main_sections">
         <div class="row">
-          <div class="col-5">
+          <div class="col-lg-5">
             <div class="section_2">
               <div class="row">
-                <div class="col-5 d-flex align-items-center">
+                <div class="col-lg-5 ">
                   <p class="temperature_text">
                     <span id="temperature">15</span>
                     <a href="#" class="temp-unit active" id="celsius-link">°C</a>
@@ -61,7 +61,7 @@
                     <a href="#" class="temp-unit non-active" id="fahrenheit-link">°F</a>
                   </p>
                 </div>
-                <div class="col-7"> <img class="big_icon" src="media/color/03d.png" alt="Clouds" /></div>
+                <div class="col-lg-7"> <img class="big_icon" src="media/color/03d.png" alt="Clouds" /></div>
               </div>
               <div class="row">
                 <div class="col">
@@ -69,11 +69,11 @@
                 </div>
               </div>
               <div class="row">
-                <div class="col-6"> <img class="the_smallest_icon" src="media/color/wind.png" alt="Wind" />
+                <div class="col-lg-6"> <img class="the_smallest_icon" src="media/color/wind.png" alt="Wind" />
                   <span id="wind">4</span>
                   <span> km/h</span>
                 </div>
-                <div class="col-6"> <img class="the_smallest_icon" src="media/color/humidity.png" alt="Drop" />
+                <div class="col-lg-6"> <img class="the_smallest_icon" src="media/color/humidity.png" alt="Drop" />
                   <span id="humidity">58</span>
                   <span>%</span>
                 </div>
@@ -81,9 +81,10 @@
             </div>
           </div>
 
-          <div class="col-1 vertical_line"></div>
+          <div class="col-1 d-none d-lg-block vertical_line"></div>
+          <div class="col-lg d-lg-none horizontal_line"></div>
 
-          <div class="col-5">
+          <div class="col-lg-5">
             <div class="section_3">
               <div class="row">
                 <div class="col-6 part">
