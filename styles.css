@@ -217,6 +217,10 @@ body {
   margin-top: -20px;
 }
 
+.nopadding {
+  padding: 0 !important;
+}
+
 @media (max-width: 992px) {
   .section_1 .center-buttons {
     display: flex;
