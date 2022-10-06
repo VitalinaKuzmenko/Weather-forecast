@@ -10,7 +10,8 @@ App's main functions:
 4) App shows weather forecast as default for New York City;
 5) User can check the weather forecast for any city in the world; 
 6) Showing weather forecast in current location (the user should give a permission to use location);
-7) Showing a current time, day and date.
+7) Showing a current time, day and dateж
+8) Showing temperature in Celsius or Fahrenheit.
 
 Deployed website:
 https://weather-forecast-vitalina-kuzmenko.netlify.app/
