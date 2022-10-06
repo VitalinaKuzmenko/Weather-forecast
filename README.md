@@ -18,7 +18,7 @@ This is the weather forecast website. It is written using technologies sush as H
 
 ## 💻 Screenshot
 
-![App Screenshot](https://previews.dropbox.com/p/thumb/ABoOfvJz7pDqJMbFNWEkooV0M9kLT7JnoNE2InwITFTfYqcRpxFq6679t7_NsLdVglK-DqSVEauXm6F_esoYsJQV7w9mi4se1Y3zde-SvF_bOHbuwC75MRSgoyMap9SRRsIRK_AGpC_kn8UECMR0kDy-aaFQcGbL6DKau8C6I9VdyYB9Sd8qwhtSQgfDysDEiXgUMP_MOp4CIN4ozWq6heFluUGh6s9_wFejXaXIv9rqTOZ5UhGDMKUoDnQBn_c3BfSl97jweqyaLFJR3bcZTi9QBldxPDD7Ir-luZCId707_1ssxtWseNPBkcWiMEg0qy0zrRb6LPJDnq_GIZVOPwL4mg9Q1MO4fOf7b4KWaiN-7hGyTFv7aTULNsbzdMK2wx0/p.png)
+![App Screenshot](https://www.dropbox.com/s/ghj1zthgfb7a1dr/Weather%20Forecast%20App.png?dl=0)
 
 
 ## 🚀 Deployed Website
