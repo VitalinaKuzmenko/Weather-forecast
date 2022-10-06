@@ -18,7 +18,7 @@ This is the weather forecast website. It is written using technologies sush as H
 
 ## 💻 Screenshot
 
-![App Screenshot](https://www.dropbox.com/s/ghj1zthgfb7a1dr/Weather%20Forecast%20App.png?dl=0)
+![App Screenshot](https://www.dropbox.com/s/ghj1zthgfb7a1dr/Weather%20Forecast%20App.png?raw=1)
 
 
 ## 🚀 Deployed Website
