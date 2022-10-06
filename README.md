@@ -15,14 +15,13 @@ This is the weather forecast website. It is written using technologies sush as H
 - Showing temperature in Celsius or Fahrenheit.
 
 
+## 🚀 Deployed Website
+https://weather-forecast-vitalina-kuzmenko.netlify.app/
+
 
 ## 💻 Screenshot
 
 ![App Screenshot](https://www.dropbox.com/s/ghj1zthgfb7a1dr/Weather%20Forecast%20App.png?raw=1)
-
-
-## 🚀 Deployed Website
-https://weather-forecast-vitalina-kuzmenko.netlify.app/
 
 
 ## 🤝 Contributing
