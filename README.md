@@ -16,7 +16,7 @@ This is the weather forecast website. It is written using technologies sush as H
 
 
 ## 🚀 Deployed Website
-https://weather-forecast-react-vitalina.netlify.app/
+https://weather-forecast-vitalina-kuzmenko.netlify.app/
 
 
 ## 💻 Screenshot
