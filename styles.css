@@ -222,6 +222,10 @@ body {
 }
 
 @media (max-width: 992px) {
+  .main_window {
+    width: 90%;
+  }
+
   .section_1 .center-buttons {
     display: flex;
     justify-content: center;
