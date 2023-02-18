@@ -309,8 +309,8 @@ unitCelsius.addEventListener("click", showCelsius);
 let unitFahrenheit = document.querySelector("#fahrenheit-link");
 unitFahrenheit.addEventListener("click", showFahrenheit);
 
-let searchButton = document.querySelector("#submit-button");
-searchButton.addEventListener("click", handleSubmit);
+let form = document.getElementById("form");
+form.addEventListener("submit", handleSubmit);
 
 let searchCurrentPlaceButton = document.querySelector("#current-place-button");
 searchCurrentPlaceButton.addEventListener("click", showDataOfCurrentPlace);
