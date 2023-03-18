@@ -226,6 +226,7 @@ function displaySection3(response) {
 
   //changing description in section 3
   let day24 = response.data.hourly;
+  console.log(day24);
   let dayDescription = document.querySelector("#day-description");
   let nightDescription = document.querySelector("#night-description");
   let dayPicture = document.querySelector("#day_icon");
